@@ -126,8 +126,52 @@
     margin-right: 5px;
   }
 
+  .post-voting {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0 5px;
+    font-family: @font-family-monospace;
+    font-weight: bold;
+    &:hover {
+      background: @header-overlay-bg;
+
+      .votes {
+        color: fadein(@brand-success, 20);
+        &[data-votes="0"] {
+          color: fade(white, 53);
+        }
+        &[data-votes^="-"] {
+          color: fadein(@brand-danger, 20);
+        }
+      }
+    }
+
+    a:hover, a:focus {
+      text-decoration: none;
+    }
+    a.btn-primary {
+      background: none !important;
+      border: none;
+      color: fade(white, 50);
+      text-shadow: 0 0 3px black;
+    }
+
+    .votes {
+      font-size: 17px;
+      color: @brand-success;
+      &[data-votes="0"] {
+        color: fade(white, 33);
+        text-shadow: 0 0 2px fade(black, 50);
+      }
+      &[data-votes^="-"] {
+        color: @brand-danger;
+      }
+    }
+  }
+
   .dropdown {
     display: inline-block;
+    margin-right: 10px;
   }
 
   .topic-footer {

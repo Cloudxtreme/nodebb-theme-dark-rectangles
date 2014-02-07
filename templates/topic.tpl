@@ -57,7 +57,7 @@
 					</div>
 					<div class="topic-footer">
 						<div class="row">
-							<div class="">
+							<div>
 								<div class="dropdown">
 									<a href="#" class="dropdown-toggle postMenu favourite-tooltip" id="postMenu_{posts.pid}" data-toggle="dropdown">
 										<i class="fa fa-heart"></i>
@@ -93,10 +93,14 @@
 										<!-- ENDIF !disableSocialButtons -->
 									</ul>
 								</div>
-								<span class="post_rep_{posts.pid}">{posts.reputation} </span>
 								<!-- BEGIN custom_profile_info -->
 								&bull; {posts.custom_profile_info.content}
 								<!-- END custom_profile_info -->
+								<div class="post-voting">
+									<a href="#" class="downvote <!-- IF posts.downvoted --> downvoted btn-primary <!-- ENDIF posts.downvoted -->"><i class="fa fa-minus"></i></a>
+									<span class="votes" data-votes="{posts.votes}">{posts.votes}</span>
+									<a href="#" class="upvote <!-- IF posts.upvoted --> upvoted btn-primary <!-- ENDIF posts.upvoted -->"><i class="fa fa-plus"></i></a>
+								</div>
 
 								<span class="post-tools">
 									<button class="btn btn-sm btn-link chat" type="button" title="[[topic:chat]]"><i class="fa fa-comment"></i><span class="hidden-xs-inline"> [[topic:chat]]</span></button>
