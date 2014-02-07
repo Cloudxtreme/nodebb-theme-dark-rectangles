@@ -1,0 +1,161 @@
+@import "bootstrap/bootstrap";
+@import "cyborg";
+@import "variables";
+@import "mixins";
+@import "header";
+@import "home";
+@import "category";
+@import "topic";
+@import "admin";
+@import "plugins";
+
+code, pre, .dropdown-menu, .panel, .modal-content {
+  .border-radius(0);
+}
+
+pre {
+  overflow-x: auto;
+  word-wrap: normal;
+  margin: 0 40px;
+  margin-bottom: 10px;
+  max-height: @pre-scrollable-max-height;
+  padding: 0;
+
+  > code {
+    display: block;
+    white-space: pre;
+    color: @code-color;
+    background: @code-bg;
+    padding: 10px;
+
+    .err {
+      border: 1px solid rgba(255, 61, 0, 0.2);
+      background: rgba(255, 61, 0, 0.15);
+    }
+  }
+}
+
+code {
+  color: @code-color;
+  background: @code-bg;
+  border: 1px dotted @code-border-color;
+}
+
+blockquote {
+  background: @header-overlay-bg;
+}
+
+table {
+  border: 1px solid @table-border-color;
+
+  tr {
+    border: 1px solid @table-border-color;
+    &:hover {
+      background: @header-overlay-bg;
+    }
+
+    td {
+      border: 1px solid @table-border-color;
+      padding: @padding-base-vertical @padding-base-horizontal;
+      &:hover {
+        background: @header-overlay-bg;
+      }
+    }
+  }
+}
+
+.user-img, .profile-image { // avatar
+  .border-radius(3px);
+  border: 1px solid fade(@pic-border-color, 75);
+  width: 52px;
+  height: 52px;
+  &.small {
+    .border-radius(2px);
+    width: 26px;
+    height: 26px;
+  }
+  &:hover {
+    .border-radius(0);
+    border: 1px solid @pic-border-color;
+  }
+}
+
+.panel {
+  >.panel-heading {
+    background: @header-overlay-bg;
+  }
+}
+
+.recent-replies {
+  padding: 0px 0 5px 0;
+  ul {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    li {
+      padding: 3px 5px 5px 5px;
+      border-bottom: 1px dashed @border-color !important;
+      &:last-child {
+        border-bottom: none !important;
+      }
+      &:hover {
+        background: @row-hover-bg;
+      }
+    }
+  }
+}
+
+.composer { // create reply/topic box
+  .box-shadow(inset 0px 15px 15px -15px white);
+  background: fade(lighten(black, 5), 85);
+  border-top: 1px solid fade(white, 30);
+
+  .formatting-bar span {
+    color: white;
+    &:hover {
+      background: @fade-bg;
+    }
+  }
+
+  textarea, .well {
+    background: @well-bg;
+    color: fade(white, 80);
+    border: 1px solid @well-border;
+  }
+}
+
+.input-group-addon {
+  &.alert-danger {
+    background-color: @alert-danger-bg !important;
+  }
+  &.alert-success {
+    background-color: @alert-success-bg !important;
+  }
+}
+
+@c: #3b3b3b;
+@e: black;
+@keyframes taskbar-active-grey {
+  from { background-color: @e; }
+  50% { background-color: @c; }
+  to { background-color: @e; }
+}
+@-webkit-keyframes taskbar-active-grey {
+  from { background-color: @e; }
+  50% { background-color: @c; }
+  to { background-color: @e; }
+}
+@-moz-keyframes taskbar-active-grey {
+  from { background-color: @e; }
+  50% { background-color: @c; }
+  to { background-color: @e; }
+}
+@-o-keyframes taskbar-active-grey {
+  from { background-color: @e; }
+  50% { background-color: @c; }
+  to { background-color: @e; }
+}
+
+.taskbar li.new a {
+  .animation(3s linear 0s normal none infinite taskbar-active-grey);
+}

@@ -1,0 +1,150 @@
+@import "variables";
+@import "mixins";
+
+.home {
+  padding: 0 30px;
+
+  @media screen and (min-width: @screen-md-min) {
+    .col-md-3 {
+      width: 24.5%; // firefox rounds up, webkit runs down. go figure...
+    }
+  }
+  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .col-sm-6 {
+      width: 48.5%;
+    }
+  }
+  @media (max-width: @screen-sm-min) {
+    .col-lg-12.col-sm-12 {
+      padding-left: 0 !important;
+    }
+  }
+
+  .col-lg-12.col-sm-12 {
+    padding: 0;
+    padding-left: 30px;
+  }
+
+  // categories
+  .category-item {
+    margin-bottom: 15px;
+
+    .category-icon { // wrapper
+      opacity: 0.7;
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .category-header { // icon
+      text-align: center;
+      padding: 10px;
+      min-height: 76px;
+
+      .badge {
+        background: none;
+        font-size: 15px;
+        position: absolute;
+        top: 2px;
+        right: 20px;
+        &.badge-important:before {
+          font-family: FontAwesome;
+          content: '\f01c';
+          padding: 5px;
+          font-size: 11px;
+        }
+      }
+    }
+
+    .category-box { // text
+      position: relative;
+      background: @fade-bg;
+      padding: 10px;
+      min-height: 30px;
+      &:after, &:before {
+        bottom: 100%;
+        left: 10%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+      }
+      &:after {
+        border-color: rgba(140, 113, 242, 0);
+        border-bottom-color: mix(@body-bg, white, 90);
+        border-width: 10px;
+        margin-left: -10px;
+      }
+      &:before {
+        border-color: rgba(122, 98, 211, 0);
+        border-width: 12px;
+        margin-left: -12px;
+      }
+
+      .post-preview {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed fade(white, 20);
+        &:last-child {
+          margin-bottom: -15px;
+
+          span {
+            margin-bottom: 5px;
+          }
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-right: 5px;
+        }
+
+        p {
+          max-height: 80px;
+          overflow: hidden;
+          float: left;
+        }
+
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  // footer
+  .category-sidebar {
+    padding: 0;
+    height: auto !important;
+
+    .panel-default {
+      &:hover .motd {
+        color: rgb(69, 203, 255);
+        background: @row-hover-bg;
+      }
+      &:hover .footer-stats {
+        background: @row-hover-bg;
+      }
+
+      .motd {
+        color: rgb(71, 203, 255);
+        padding: 1em;
+        margin: 0;
+
+        >p {
+          margin: 0;
+        }
+      }
+
+      .panel-body {
+        padding: @panel-body-padding;
+        .footer-stats { // forum stats
+          .border-radius(0 0 4px 4px);
+          padding-top: 0px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

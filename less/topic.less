@@ -1,0 +1,164 @@
+@import "variables";
+@import "mixins";
+
+.topic {
+  > ul {
+    margin-bottom: 0;
+    > li {
+      padding-bottom: 0;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .post-content {
+    padding-left: 20px;
+  }
+
+  .post-signature {
+    font-size: 12px;
+    border-top: 1px dashed @border-color;
+    width: 100%;
+    display: inline-block;
+    font-style: italic;
+    padding: 5px 1px 1px 5px;
+  }
+
+  .topic-item {
+    position: relative;
+    &:hover .post-tools {
+      opacity: 1;
+    }
+
+    .post-tools {
+      .transition(opacity 0.1s ease-in);
+      opacity: 0;
+
+      button {
+        color: fade(white, 30);
+      }
+    }
+  }
+
+  .post-bar {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+
+  .post-bar, .post-row {
+    background-color: @fade-bg;
+  }
+
+  .profile-image {
+    .transition(0.2s opacity ease-in-out);
+    .border-radius(3px);
+    width: 52px;
+    height: 52px;
+    border: 1px solid fade(@pic-border-color, 50);
+    opacity: 0.5;
+    &.small {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .topic-body {
+    padding: 10px;
+    padding-bottom: 5px;
+    &:hover .profile-image {
+      opacity: 1;
+    }
+  }
+
+  .topic-profile-pic {
+    float: left;
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+
+  .topic-text {
+    color: @post-color;
+    overflow: hidden;
+    word-wrap: break-word;
+    margin-right: 67px;
+  }
+
+  .posts > li {
+    border-left: 2px solid @brand-primary;
+    &[data-index="0"] {
+      border-left: none;
+
+      .post-content {
+        min-height: 60px;
+      }
+
+      .topic-title {
+        display: block;
+        font-size: @font-size-h3;
+      }
+    }
+
+    .topic-title {
+      margin-top: 0px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #fff;
+    }
+  }
+
+  .postMenu, .menu-icon {
+    .border-radius(4px);
+    background: @brand-primary;
+    color: black;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    display: inline-block;
+    line-height: 22px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    margin-right: 5px;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+
+  .topic-footer {
+    border-top: 1px solid @border-color;
+
+    .pull-right {
+      text-align: right;
+      padding: 5px 10px;
+    }
+
+    .row {
+      padding: 4px 10px 2px 20px;
+    }
+  }
+
+  .favourite, .follow {
+    cursor: pointer;
+  }
+
+  .favourite.btn-warning, .follow.btn-success {
+    background: fade(black, 40) !important;
+    &:hover {
+      background: @brand-primary !important;
+    }
+  }
+}
+
+.plugin-mentions-a { // consignee-'button'
+  background: @fade-bg !important;
+  border: 1px solid @border-color !important;
+  &:hover {
+    background: transparent !important;
+  }
+}

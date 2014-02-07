@@ -1,0 +1,20 @@
+@import "variables";
+@import "mixins";
+
+.emoji, .nodebb-plugin-emoji-skype {
+  position: relative;
+  top: -2px;
+}
+
+.nodebb-plugin-emoji-skype {
+  .border-radius(100%);
+  background: white;
+
+  &[src$="/sleepy.gif"], &[src$="/inlove.gif"], &[src$="/party.gif"], &[src$="/bear.gif"], &[src$="/bow.gif"],
+  &[src$="/yes.gif"], &[src$="/no.gif"], &[src$="/handshake.gif"], &[src$="/skype.gif"], &[src$="/mail.gif"],
+  &[src$="/rain.gif"], &[src$="/music.gif"], &[src$="/muscle.gif"], &[src$="/cake.gif"], &[src$="/beer.gif"],
+  &[src$="/drink.gif"], &[src$="/mooning.gif"], &[src$="/bandit.gif"], &[src$="/smoke.gif"], &[src$="/toivo.gif"],
+  &[src$="/rock.gif"], &[src$="/poolparty.gif"], &[src$="/heidy.gif"], &[src$="/myspace.gif"], &[src$="/priidu.gif"] {
+    .border-radius(0);
+  }
+}

@@ -1,0 +1,63 @@
+@import "variables";
+@import "mixins";
+
+.breadcrumb {
+  .border-radius(0);
+  height: 35px;
+}
+
+.category {
+  li.category-item {
+    background-color: fade(white, 6);
+    border-bottom: 1px solid @border-color !important;
+    &:last-child {
+      border-bottom: none !important;
+    }
+    &:hover {
+      background-color: fade(white, 8);
+    }
+
+    .profile-image {
+      margin-bottom: 5px;
+    }
+
+    .category-body {
+      padding: 10px;
+      padding-bottom: 5px;
+      margin-bottom: 0;
+    }
+
+    .category-profile-pic {
+      float: left;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    .category-text {
+      font-size: 18px;
+      color: #666;
+      overflow: hidden;
+    }
+  }
+}
+
+.category-stat {
+  text-align: center;
+  &.replies {
+    line-height: 10px;
+    padding-top: 8px;
+
+    .no-replies {
+      padding-top: 13px;
+      line-height: 15px;
+    }
+  }
+
+  strong {
+    font-size: 25px;
+  }
+
+  small {
+    color: #8A8A8A;
+  }
+}
