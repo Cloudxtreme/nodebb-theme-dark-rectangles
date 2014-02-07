@@ -3,7 +3,7 @@ Dark Rectangles Theme for NodeBB
 
 A simple dark theme for NodeBB.
 
-Based on [Lavender Theme for NodeBB](https://www.github.com/psychobunny/nodebb-theme-lavender).
+Based on [Vanilla theme for NodeBB](https://www.github.com/designcreateplay/nodebb-theme-vanilla).
 
 ### Installation
 
