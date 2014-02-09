@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-12 col-sm-12">
+  <div class="col-lg-12 col-sm-12" id="categories">
     <div class="row">
       <!-- BEGIN categories -->
       <div class="col-md-3 col-sm-6 col-xs-12 category-item">
