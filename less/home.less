@@ -4,19 +4,24 @@
 .home {
   padding: 0 30px;
 
-  @media screen and (min-width: @screen-md-min) {
-    .col-md-3 {
-      width: 24.5%; // firefox rounds up, webkit runs down. go figure...
-    }
-  }
-  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-    .col-sm-6 {
-      width: 48.5%;
-    }
-  }
   @media (max-width: @screen-sm-min) {
     .col-lg-12.col-sm-12 {
       padding-left: 0 !important;
+    }
+  }
+  @media screen and (min-width: @screen-sm-min) {
+    .col-sm-6 {
+      width: @home-container-tablet;
+    }
+  }
+  @media screen and (min-width: @screen-md-min) {
+    .col-sm-6 {
+      width: @home-container-desktop;
+    }
+  }
+  @media screen and (min-width: @screen-lg-min) {
+    .col-md-3 {
+      width: @home-container-large-desktop;
     }
   }
 
