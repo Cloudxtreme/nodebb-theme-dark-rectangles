@@ -1,6 +1,6 @@
 {
   "name": "nodebb-theme-dark-rectangles",
-  "version": "0.0.2-4",
+  "version": "0.0.2-5",
   "description": "Dark Theme for NodeBB",
   "main": "theme.less",
   "repository": {
@@ -24,7 +24,7 @@
   },
   "readmeFilename": "README.md",
   "homepage": "https://github.com/frissdiegurke/nodebb-theme-dark-rectangles",
-  "_id": "nodebb-theme-dark-rectangles@0.0.2-4",
+  "_id": "nodebb-theme-dark-rectangles@0.0.2-5",
   "_from": "nodebb-theme-dark-rectangles@",
   "readme": "Dark Rectangles Theme for NodeBB\n=========================\n\nA simple dark theme for NodeBB.\n\nBased on [Lavender Theme for NodeBB](https://www.github.com/psychobunny/nodebb-theme-lavender).\n\n### Installation\n\n    npm install nodebb-theme-dark-rectangles\n\n### Credits\n\nvariables.less, static and templates modified from [Lavender Theme for NodeBB](https://www.github.com/psychobunny/nodebb-theme-lavender).",
   "bugs": {

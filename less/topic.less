@@ -197,6 +197,19 @@
       background: @brand-primary !important;
     }
   }
+
+  .category-list li {
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+    &.disabled {
+      opacity: 0.15;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
 }
 
 .plugin-mentions-a { // consignee-'button'
