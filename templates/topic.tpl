@@ -94,7 +94,7 @@
 									</ul>
 								</div>
 								<!-- BEGIN custom_profile_info -->
-								&bull; {posts.custom_profile_info.content}
+								{posts.custom_profile_info.content}
 								<!-- END custom_profile_info -->
 								<div class="post-voting">
 									<a href="#" class="downvote <!-- IF posts.downvoted --> downvoted btn-primary <!-- ENDIF posts.downvoted -->"><i class="fa fa-minus"></i></a>
