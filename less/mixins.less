@@ -24,3 +24,17 @@
   -o-animation: @attr;
   animation: @attr;
 }
+
+.background-size(@attr) {
+  -webkit-background-size: @attr;
+  -moz-background-size: @attr;
+  -o-background-size: @attr;
+  background-size: @attr;
+}
+
+.background-size(important, @attr) {
+  -webkit-background-size: @attr !important;
+  -moz-background-size: @attr !important;
+  -o-background-size: @attr !important;
+  background-size: @attr !important;
+}

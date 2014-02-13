@@ -37,10 +37,10 @@
     }
 
     .category-header { // icon
+      .background-size(important, 100% auto);
+      background-repeat: no-repeat;
+      background-position: center !important;
       text-align: center;
-      padding: 10px;
-      min-height: 76px;
-      background-size: cover !important;
 
       .badge {
         background: none;
@@ -55,6 +55,11 @@
           font-size: 11px;
         }
       }
+
+      > a > div {
+        padding: 10px;
+        height: 76px;
+      }
     }
 
     .category-box { // text
@@ -65,22 +70,18 @@
       &:after, &:before {
         bottom: 100%;
         left: 10%;
-        border: solid transparent;
         content: " ";
         height: 0;
         width: 0;
+        border: 10px solid transparent;
+        border-top-width: 0;
         position: absolute;
       }
       &:after {
-        border-color: rgba(140, 113, 242, 0);
-        border-bottom-color: mix(@body-bg, white, 90);
-        border-width: 10px;
-        margin-left: -10px;
+        border-bottom-color: @fade-bg;
       }
       &:before {
-        border-color: rgba(122, 98, 211, 0);
-        border-width: 12px;
-        margin-left: -12px;
+        border-bottom-color: @body-bg;
       }
 
       .post-preview {
