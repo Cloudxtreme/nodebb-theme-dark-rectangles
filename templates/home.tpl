@@ -1,4 +1,4 @@
-<div class="row home" itemscope itemtype="http://www.schema.org/ItemList">
+<div class="row home" id="categories-wrapper" itemscope itemtype="http://www.schema.org/ItemList">
   <div class="col-xs col-sm-12 {show_sidebar} category category-sidebar">
     <div class="panel panel-default {motd_class}">
       <div class="panel-heading">MOTD</div>
