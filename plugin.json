@@ -1,0 +1,10 @@
+{
+  "id": "nodebb-theme-dark-rectangles",
+  "library": "./index.js",
+  "staticDirs": {
+    "dark-rectangles": "static/dark-rectangles"
+  },
+  "scripts": [
+    "static/dark-rectangles/dark-rectangles.js"
+  ]
+}

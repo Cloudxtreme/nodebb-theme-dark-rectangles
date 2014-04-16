@@ -2,7 +2,6 @@
 @import "mixins";
 
 .home {
-  padding: 0 30px;
 
   @media screen and (min-width: @screen-sm-min) {
     .col-sm-6 {
@@ -20,7 +19,7 @@
     }
   }
 
-  .col-lg-12.col-sm-12 {
+  > div:first-child {
     padding: 0;
     padding-left: 1%;
   }
@@ -112,41 +111,6 @@
 
         span {
           font-size: 12px;
-        }
-      }
-    }
-  }
-
-  // footer
-  .category-sidebar {
-    padding: 0;
-    height: auto !important;
-
-    .panel-default {
-      &:hover .motd {
-        color: rgb(69, 203, 255);
-        background: @row-hover-bg;
-      }
-      &:hover .footer-stats {
-        background: @row-hover-bg;
-      }
-
-      .motd {
-        color: rgb(71, 203, 255);
-        padding: 1em;
-        margin: 0;
-
-        >p {
-          margin: 0;
-        }
-      }
-
-      .panel-body {
-        padding: @panel-body-padding;
-        .footer-stats { // forum stats
-          .border-radius(0 0 4px 4px);
-          padding-top: 0px;
-          margin: 0;
         }
       }
     }
