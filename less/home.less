@@ -20,25 +20,24 @@
   }
 
   > div:first-child {
-    padding: 0;
-    padding-left: 1%;
+    padding: 0 0 0 1%;
   }
 
   // categories
   .category-item {
     margin-bottom: 15px;
 
-    .category-icon { // wrapper
+    .category-icon {
+      // wrapper
       opacity: 0.7;
       &:hover {
         opacity: 1;
       }
     }
 
-    .category-header { // icon
-      .background-size(important, 100% auto);
+    .category-header {
+      // icon
       background-repeat: no-repeat;
-      background-position: center !important;
       text-align: center;
 
       .badge {
@@ -55,13 +54,14 @@
         }
       }
 
-      > a > div {
+      > div > i {
         padding: 10px;
         height: 76px;
       }
     }
 
-    .category-box { // text
+    .category-box {
+      // text
       position: relative;
       background: @fade-bg;
       padding: 10px;
@@ -109,7 +109,10 @@
           }
         }
 
-        span {
+        > span {
+          .mixColors(@body-bg, @fade-bg);
+          background-color: @c;
+          padding: 0 4px;
           font-size: 12px;
         }
       }

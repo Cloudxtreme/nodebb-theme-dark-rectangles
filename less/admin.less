@@ -2,8 +2,8 @@
 @import "mixins";
 
 .admin {
-  .categories .admin-categories>ul {
-    >li {
+  .categories .admin-categories > ul {
+    > li {
       .border-radius(0);
       background: fade(mix(@body-bg, white, 90), 85);
       border: 1px solid @fade-bg;
@@ -14,8 +14,8 @@
       }
 
       .form-control:focus {
-        .box-shadow(0 0 3px rgba(102,175,233,0.6));
-        border-color: rgba(102,175,233,0.4);
+        .box-shadow(0 0 3px rgba(102, 175, 233, 0.6));
+        border-color: rgba(102, 175, 233, 0.4);
       }
 
       .row:nth-child(3) {
@@ -36,7 +36,7 @@
     border-color: rgba(122, 0, 0, 0.33);
   }
 
-  .plugins>li, #themes .directory>li, .topics>li {
+  .plugins > li, #themes .directory > li, .topics > li {
     .border-radius(0);
     .transition(0 opacity);
     margin: 0 5px;
@@ -50,11 +50,11 @@
     }
   }
 
-  .plugins>li, .topics>li {
+  .plugins > li, .topics > li {
     padding: 5px 15px;
   }
 
-  .topics>li .btn {
+  .topics > li .btn {
     .border-radius(0);
     background: mix(@body-bg, white, 50) !important;
   }

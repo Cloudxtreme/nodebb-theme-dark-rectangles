@@ -38,3 +38,7 @@
   -o-background-size: @attr !important;
   background-size: @attr !important;
 }
+
+.mixColors(@c1, @c2) {
+  @c: @c1 + (@c2 - @c1) * alpha(@c2);
+}

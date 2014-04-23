@@ -28,6 +28,9 @@
 
   .topic-item {
     position: relative;
+    &.highlight {
+      background-color: fade(@brand-primary, 8);
+    }
     &:hover .post-tools {
       opacity: 1;
     }
@@ -66,8 +69,7 @@
   }
 
   .topic-body {
-    padding: 10px;
-    padding-bottom: 5px;
+    padding: 10px 10px 5px;
     &:hover .profile-image {
       opacity: 1;
     }
@@ -81,9 +83,8 @@
 
   .topic-text {
     color: @post-color;
-    overflow: hidden;
     word-wrap: break-word;
-    margin-right: 67px;
+    margin: 0 62px;
   }
 
   .posts > li {
@@ -103,7 +104,7 @@
 
     .topic-title {
       margin-top: 0px;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       font-weight: 500;
       color: #fff;
     }
@@ -209,13 +210,5 @@
         opacity: 0.5;
       }
     }
-  }
-}
-
-.plugin-mentions-a { // consignee-'button'
-  background: @fade-bg !important;
-  border: 1px solid @border-color !important;
-  &:hover {
-    background: transparent !important;
   }
 }

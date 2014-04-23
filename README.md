@@ -8,13 +8,13 @@ Based on [Vanilla theme for NodeBB](https://www.github.com/designcreateplay/node
 ### Installation
 
     npm install nodebb-theme-dark-rectangles
-    
+
 ### Distribution
 
  + [Github](https://github.com/frissdiegurke/nodebb-theme-dark-rectangles)
  + [NPM](https://npmjs.org/package/nodebb-theme-dark-rectangles)
-    
-### Screenshots
+
+### Screenshots (quite prior version)
 
 [![home](https://raw.github.com/frissdiegurke/nodebb-theme-dark-rectangles/master/screenshots/scaled/home.png)](https://raw.github.com/frissdiegurke/nodebb-theme-dark-rectangles/master/screenshots/home.png)
 

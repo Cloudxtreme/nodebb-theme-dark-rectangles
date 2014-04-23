@@ -1,9 +1,9 @@
 {
-  "id": "nodebb-theme-dark-rectangles",
-  "name": "Dark Rectangles Theme for NodeBB",
-  "description": "A simple dark theme for NodeBB.",
-  "url": "https://www.github.com/frissdiegurke/nodebb-theme-dark-rectangles",
-  "screenshot": "screenshot.png",
-  "templates": "templates",
-  "staticDir": "static"
+    "id": "nodebb-theme-dark-rectangles",
+    "name": "Dark Rectangles Theme for NodeBB",
+    "description": "A simple dark theme for NodeBB.",
+    "url": "https://www.github.com/frissdiegurke/nodebb-theme-dark-rectangles",
+    "screenshot": "screenshot.png",
+    "templates": "templates",
+    "staticDir": "static"
 }

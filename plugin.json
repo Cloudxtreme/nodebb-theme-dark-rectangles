@@ -1,10 +1,16 @@
 {
   "id": "nodebb-theme-dark-rectangles",
   "library": "./index.js",
+  "hooks": [
+    {
+      "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas"
+    }
+  ],
   "staticDirs": {
-    "dark-rectangles": "static/dark-rectangles"
+      "dark-rectangles": "static/dark-rectangles"
   },
   "scripts": [
-    "static/dark-rectangles/dark-rectangles.js"
-  ]
+      "static/dark-rectangles/dark-rectangles.js"
+  ],
+  "minver": "0.4.0"
 }

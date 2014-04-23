@@ -8,7 +8,6 @@
 @import "topic";
 @import "admin";
 @import "plugins";
-@import "search";
 
 .container {
   padding: 0;
@@ -18,32 +17,33 @@ code, pre, .dropdown-menu, .panel, .modal-content {
   .border-radius(0);
 }
 
+code, pre > code {
+  color: @code-color;
+  background: @code-bg;
+  border: 1px dotted @code-border-color;
+  width: auto;
+}
+
 pre {
   overflow-x: auto;
   word-wrap: normal;
-  margin: 0 40px;
-  margin-bottom: 10px;
+  margin: 0 40px 10px;
+  border: 1px dotted @code-border-color;
   max-height: @pre-scrollable-max-height;
   padding: 0;
 
   > code {
-    display: block;
+    display: inline-block;
     white-space: pre;
-    color: @code-color;
-    background: @code-bg;
+    border: none;
     padding: 10px;
+    min-width: 100%;
 
     .err {
       border: 1px solid rgba(255, 61, 0, 0.2);
       background: rgba(255, 61, 0, 0.15);
     }
   }
-}
-
-code {
-  color: @code-color;
-  background: @code-bg;
-  border: 1px dotted @code-border-color;
 }
 
 blockquote {
@@ -73,7 +73,8 @@ table {
   }
 }
 
-.user-img, .profile-image { // avatar
+.user-img, .profile-image {
+  // avatar
   .border-radius(3px);
   border: 1px solid fade(@pic-border-color, 75);
   width: 52px;
@@ -90,20 +91,21 @@ table {
 }
 
 .panel {
-  >.panel-heading {
+  > .panel-heading {
     background: @header-overlay-bg;
   }
 }
 
 .recent-replies {
-  padding: 0px 0 5px 0;
+  padding: 10px;
   ul {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 5px !important;
 
     li {
       padding: 3px 5px 5px 5px;
       border-bottom: 1px dashed @border-color !important;
+      margin: 0;
       &:last-child {
         border-bottom: none !important;
       }
@@ -114,7 +116,8 @@ table {
   }
 }
 
-.composer { // create reply/topic box
+.composer {
+  // create reply/topic box
   .box-shadow(inset 0px 15px 15px -15px white);
   background: fade(lighten(black, 5), 85);
   border-top: 1px solid fade(white, 30);
@@ -131,6 +134,10 @@ table {
     color: fade(white, 80);
     border: 1px solid @well-border;
   }
+
+  .well {
+    overflow-y: auto;
+  }
 }
 
 .input-group-addon {
@@ -145,24 +152,51 @@ table {
 @c: #3b3b3b;
 @e: black;
 @keyframes taskbar-active-grey {
-  from { background-color: @e; }
-  50% { background-color: @c; }
-  to { background-color: @e; }
+  from {
+    background-color: @e;
+  }
+  50% {
+    background-color: @c;
+  }
+  to {
+    background-color: @e;
+  }
 }
+
 @-webkit-keyframes taskbar-active-grey {
-  from { background-color: @e; }
-  50% { background-color: @c; }
-  to { background-color: @e; }
+  from {
+    background-color: @e;
+  }
+  50% {
+    background-color: @c;
+  }
+  to {
+    background-color: @e;
+  }
 }
+
 @-moz-keyframes taskbar-active-grey {
-  from { background-color: @e; }
-  50% { background-color: @c; }
-  to { background-color: @e; }
+  from {
+    background-color: @e;
+  }
+  50% {
+    background-color: @c;
+  }
+  to {
+    background-color: @e;
+  }
 }
+
 @-o-keyframes taskbar-active-grey {
-  from { background-color: @e; }
-  50% { background-color: @c; }
-  to { background-color: @e; }
+  from {
+    background-color: @e;
+  }
+  50% {
+    background-color: @c;
+  }
+  to {
+    background-color: @e;
+  }
 }
 
 .taskbar li.new a {
