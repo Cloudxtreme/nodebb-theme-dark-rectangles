@@ -98,14 +98,43 @@
           margin: 0 5px 5px 0;
         }
 
-        p {
-          margin: 0;
-          max-height: 80px;
-          float: left;
-          clear: left;
+        .post-preview-content{
+          max-height: 250px;
+          overflow: hidden;
+          transition-property: max-height;
+          transition-delay: 0.2s;
+          &:hover {
+            max-height: 10000px;
+            transition-delay: 1s;
+          }
+
+          > p {
+            clear: left;
+            &:nth-child(2) {
+              margin: 0;
+              max-height: 80px;
+              float: left;
+              clear: none;
+            }
+          }
 
           img {
             max-width: 100%;
+          }
+
+          blockquote {
+            p {
+              display: none;
+            }
+            clear: left;
+            margin-bottom: 5px;
+            &:after {
+              content: '· · ·';
+            }
+
+            blockquote {
+              display: none;
+            }
           }
         }
 
@@ -114,6 +143,8 @@
           background-color: @c;
           padding: 0 4px;
           font-size: 12px;
+          color: white;
+          margin-top: 5px;
         }
       }
     }

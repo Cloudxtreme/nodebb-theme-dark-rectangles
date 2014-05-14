@@ -12,5 +12,5 @@
   "scripts": [
       "static/dark-rectangles/dark-rectangles.js"
   ],
-  "minver": "0.4.0"
+  "minver": "0.4.3"
 }
