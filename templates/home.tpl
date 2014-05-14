@@ -1,3 +1,4 @@
+<!-- Same as lavender //-->
 <div class="row home" itemscope itemtype="http://www.schema.org/ItemList">
 	<div class="col-lg-9 col-sm-12" no-widget-class="col-lg-12 col-sm-12" no-widget-target="sidebar">
 		<div class="row">
@@ -31,15 +32,17 @@
 					</a>
 
 					<div class="category-box">
-						<!-- IF categories.link -->
-						<a href="{categories.link}" itemprop="url" target="_blank">
-						<!-- ELSE -->
-						<a href="{relative_path}/category/{categories.slug}" itemprop="url">
-						<!-- ENDIF categories.link-->
-							<h4><!-- IF categories.icon --><i class="fa {categories.icon} visible-xs-inline"></i> <!-- ENDIF categories.icon -->{categories.name}</h4>
-						</a>
-						<div class="description" itemprop="description">{categories.description}</div>
-						<!-- IF !categories.link -->
+						<div class="category-info">
+							<!-- IF categories.link -->
+							<a href="{categories.link}" itemprop="url" target="_blank">
+							<!-- ELSE -->
+							<a href="{relative_path}/category/{categories.slug}" itemprop="url">
+							<!-- ENDIF categories.link-->
+								<h4><!-- IF categories.icon --><i class="fa {categories.icon} visible-xs-inline"></i> <!-- ENDIF categories.icon -->{categories.name}</h4>
+							</a>
+							<div class="description" itemprop="description">{categories.description}</div>
+							<!-- IF !categories.link -->
+						</div>
 						<!-- BEGIN posts -->
 						<div class="post-preview clearfix">
 							<div class="post-preview-content">
