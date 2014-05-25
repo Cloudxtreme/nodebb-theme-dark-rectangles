@@ -9,8 +9,8 @@ homeCategoryPositionAnimated = true
 
 if masonry && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test navigator.userAgent
   requirejs [
-      RELATIVE_PATH + '/css/assets/dark-rectangles/lib/masonry.pkgd.min.js'
-      RELATIVE_PATH + '/css/assets/dark-rectangles/lib/imagesloaded.pkgd.min.js'
+      RELATIVE_PATH + '/plugins/nodebb-theme-dark-rectangles/lib/masonry.pkgd.min.js'
+      RELATIVE_PATH + '/plugins/nodebb-theme-dark-rectangles/lib/imagesloaded.pkgd.min.js'
   ], (Masonry) ->
     $(window).on 'action:ajaxify.end', (e, data) ->
       if data.url == ''

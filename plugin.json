@@ -7,7 +7,7 @@
     }
   ],
   "staticDirs": {
-      "dark-rectangles": "static/dark-rectangles"
+      "lib": "static/dark-rectangles/lib"
   },
   "scripts": [
       "static/dark-rectangles/dark-rectangles.js"
