@@ -1,6 +1,6 @@
 {
     "name": "nodebb-theme-dark-rectangles",
-    "version": "0.0.7-2",
+    "version": "0.0.7-3",
     "description": "Dark Theme for NodeBB",
     "main": "theme.less",
     "repository": {
