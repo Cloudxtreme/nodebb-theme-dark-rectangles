@@ -6,11 +6,9 @@
       "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas"
     }
   ],
-  "staticDirs": {
-      "lib": "static/dark-rectangles/lib"
-  },
   "scripts": [
-      "static/dark-rectangles/dark-rectangles.js"
-  ],
-  "minver": "0.4.3"
+      "static/dark-rectangles.js",
+      "static/lib/masonry.pkgd.min.js",
+      "static/lib/imagesloaded.pkgd.min.js"
+  ]
 }

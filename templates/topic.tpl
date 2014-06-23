@@ -1,12 +1,12 @@
-<!-- Same as lavender without &bull;s //-->
-<input type="hidden" template-variable="expose_tools" value="{expose_tools}" />
+<!-- Same as lavender without &bull;s, added fa-lg to group-labels, no i-tag if no group-icon //-->
 <input type="hidden" template-variable="topic_id" value="{tid}" />
+<input type="hidden" template-variable="topic_slug" value="{slug}" />
 <input type="hidden" template-variable="category_id" value="{category.cid}" />
 <input type="hidden" template-variable="currentPage" value="{currentPage}" />
 <input type="hidden" template-variable="pageCount" value="{pageCount}" />
-<input type="hidden" template-variable="locked" value="{locked}" />
-<input type="hidden" template-variable="deleted" value="{deleted}" />
-<input type="hidden" template-variable="pinned" value="{pinned}" />
+<input type="hidden" template-variable="locked" template-type="boolean" value="{locked}" />
+<input type="hidden" template-variable="deleted" template-type="boolean" value="{deleted}" />
+<input type="hidden" template-variable="pinned" template-type="boolean" value="{pinned}" />
 <input type="hidden" template-variable="topic_name" value="{title}" />
 <input type="hidden" template-variable="postcount" value="{postcount}" />
 <input type="hidden" template-variable="viewcount" value="{viewcount}" />
@@ -21,7 +21,7 @@
 			<a href="{relative_path}/category/{category.slug}" itemprop="url"><span itemprop="title">{category.name}</span></a>
 		</li>
 		<li class="active" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-			<span itemprop="title">{title} <a target="_blank" href="../{tid}.rss"><i class="fa fa-rss-square"></i></a></span>
+			<span itemprop="title">{title} <a target="_blank" href="{relative_path}/topic/{tid}.rss"><i class="fa fa-rss-square"></i></a></span>
 		</li>
 		<div class="loading-indicator pull-right" done="0" style="display:none;">
 			<i class="fa fa-refresh fa-spin"></i>
@@ -30,9 +30,8 @@
 
 	<ul id="post-container" class="posts" data-tid="{tid}">
 		<!-- BEGIN posts -->
-			<li class="post-row<!-- IF posts.deleted --> deleted<!-- ENDIF posts.deleted -->" data-pid="{posts.pid}" data-uid="{posts.uid}" data-username="{posts.user.username}" data-userslug="{posts.user.userslug}" data-index="{posts.index}" itemscope itemtype="http://schema.org/Comment">
-
-				<a id="post_anchor_{posts.pid}" name="{posts.pid}"></a>
+			<li class="post-row<!-- IF posts.deleted --> deleted<!-- ENDIF posts.deleted -->" data-pid="{posts.pid}" data-uid="{posts.uid}" data-username="{posts.user.username}" data-userslug="{posts.user.userslug}" data-index="{posts.index}" data-timestamp="{posts.timestamp}" data-votes="{posts.votes}" itemscope itemtype="http://schema.org/Comment">
+				<a id="post_anchor_{posts.index}" name="{posts.index}"></a>
 
 				<meta itemprop="datePublished" content="{posts.relativeTime}">
 				<meta itemprop="dateModified" content="{posts.relativeEditTime}">
@@ -41,10 +40,23 @@
 					<div class="topic-body">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="topic-profile-pic hidden-xs">
+								<div class="topic-profile-pic hidden-xs text-center">
 									<a href="<!-- IF posts.user.userslug -->{relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">
 										<img src="{posts.user.picture}" alt="{posts.user.username}" class="profile-image user-img" title="{posts.user.username}">
 									</a>
+
+									<!-- IF posts.user.groups.length -->
+									<div class="text-center">
+									<!-- BEGIN groups -->
+									<span class="label inline-block" style="background-color: {posts.user.groups.labelColor};">
+										<!-- IF posts.user.groups.icon -->
+										<i class="fa fa-lg {posts.user.groups.icon}"></i>
+										<!-- ENDIF posts.user.groups.icon -->
+										{posts.user.groups.userTitle}
+									</span><br/>
+									<!-- END groups -->
+									</div>
+									<!-- ENDIF posts.user.groups.length -->
 								</div>
 								<div class="topic-text">
 									<!-- IF @first -->
@@ -127,27 +139,28 @@
 									<i class="fa fa-chevron-down"></i>
 								</a>
 
-								<!-- IF custom_profile_info -->
+								<!-- IF posts.user.custom_profile_info.length -->
 									<!-- BEGIN custom_profile_info -->
-									{posts.custom_profile_info.content}
+									{posts.user.custom_profile_info.content}
 									<!-- END custom_profile_info -->
-								<!-- ENDIF custom_profile_info -->
+								<!-- ENDIF posts.user.custom_profile_info.length -->
 								<span class="post-tools">
 									<!-- IF !posts.selfPost -->
 									<!-- IF posts.user.userslug -->
 									<button class="btn btn-sm btn-link chat" type="button" title="[[topic:chat]]"><i class="fa fa-comment"></i><span class="hidden-xs-inline"> [[topic:chat]]</span></button>
 									<!-- ENDIF posts.user.userslug -->
 									<!-- ENDIF !posts.selfPost -->
-									<!-- IF privileges.meta.topics:reply -->
+									<!-- IF privileges.topics:reply -->
 									<button class="btn btn-sm btn-link quote" type="button" title="[[topic:quote]]"><i class="fa fa-quote-left"></i><span class="hidden-xs-inline"> [[topic:quote]]</span></button>
 									<button class="btn btn-sm btn-link post_reply" type="button"><i class="fa fa-reply"></i><span class="hidden-xs-inline"> [[topic:reply]]</span></button>
-									<!-- ENDIF privileges.meta.topics:reply -->
+									<!-- ENDIF privileges.topics:reply -->
 									<!-- IF !posts.selfPost -->
 									<button class="btn btn-sm btn-link flag" type="button" title="[[topic:flag_title]]"><i class="fa fa-flag-o"></i><span class="hidden-xs-inline"> [[topic:flag]]</span></button>
 									<!-- ENDIF !posts.selfPost -->
 									<!-- IF posts.display_moderator_tools -->
 										<button class="btn btn-sm btn-link edit" type="button" title="[[topic:edit]]"><i class="fa fa-pencil"></i><span class="hidden-xs-inline"> [[topic:edit]]</span></button>
 										<button class="btn btn-sm btn-link delete" type="button" title="[[topic:delete]]"><i class="fa fa-trash-o"></i><span class="hidden-xs-inline"> [[topic:delete]]</span></button>
+										<button class="btn btn-sm btn-link purge <!-- IF !posts.deleted -->none<!-- ENDIF !posts.deleted -->" type="button" title="[[topic:purge]]"><i class="fa fa-eraser"></i><span class="hidden-xs-inline"> [[topic:purge]]</span></button>
 										<!-- IF posts.display_move_tools -->
 											<button class="btn btn-sm btn-link move" type="button" title="[[topic:move]]"><i class="fa fa-arrows"></i><span class="hidden-xs-inline"> [[topic:move]]</span></button>
 										<!-- ENDIF posts.display_move_tools -->
@@ -167,7 +180,7 @@
 		<!-- END posts -->
 	</ul>
 
-	<div class="post-bar col-xs-12 pull-right hide bottom-post-bar">
+	<div class="post-bar col-xs-12 hide bottom-post-bar">
 		<!-- IMPORT partials/post_bar.tpl -->
 	</div>
 

@@ -73,6 +73,18 @@ table {
   }
 }
 
+a[href*='/tags/'] {
+  text-decoration: none;
+  .label {
+    &:hover, &:focus {
+      background: @fade-bg;
+    }
+    background: @row-hover-bg;
+    border-radius: 0;
+    border: 1px solid grey;
+  }
+}
+
 .user-img, .profile-image {
   // avatar
   .border-radius(3px);
