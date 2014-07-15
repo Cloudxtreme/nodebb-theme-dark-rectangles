@@ -1,4 +1,4 @@
-<!-- Same as lavender without &bull;s, added fa-lg to group-labels, no i-tag if no group-icon //-->
+<!-- Same as lavender without &bull;s, added fa-lg to group-labels, removed hr-tag below title //-->
 <input type="hidden" template-variable="topic_id" value="{tid}" />
 <input type="hidden" template-variable="topic_slug" value="{slug}" />
 <input type="hidden" template-variable="category_id" value="{category.cid}" />
@@ -48,12 +48,7 @@
 									<!-- IF posts.user.groups.length -->
 									<div class="text-center">
 									<!-- BEGIN groups -->
-									<span class="label inline-block" style="background-color: {posts.user.groups.labelColor};">
-										<!-- IF posts.user.groups.icon -->
-										<i class="fa fa-lg {posts.user.groups.icon}"></i>
-										<!-- ENDIF posts.user.groups.icon -->
-										{posts.user.groups.userTitle}
-									</span><br/>
+									<span class="label group-label inline-block" style="background-color: {posts.user.groups.labelColor};"><!-- IF posts.user.groups.icon --><i class="fa fa-lg {posts.user.groups.icon}"></i> <!-- ENDIF posts.user.groups.icon -->{posts.user.groups.userTitle}</span><br/>
 									<!-- END groups -->
 									</div>
 									<!-- ENDIF posts.user.groups.length -->
@@ -131,6 +126,7 @@
 										</li>
 									</ul>
 								</div>
+								<!-- IF !reputation:disabled -->
 								<a href="#" class="upvote <!-- IF posts.upvoted --> upvoted btn-primary <!-- ENDIF posts.upvoted -->">
 									<i class="fa fa-chevron-up"></i>
 								</a>
@@ -138,6 +134,7 @@
 								<a href="#" class="downvote <!-- IF posts.downvoted --> downvoted btn-primary <!-- ENDIF posts.downvoted -->">
 									<i class="fa fa-chevron-down"></i>
 								</a>
+								<!-- ENDIF !reputation:disabled -->
 
 								<!-- IF posts.user.custom_profile_info.length -->
 									<!-- BEGIN custom_profile_info -->
