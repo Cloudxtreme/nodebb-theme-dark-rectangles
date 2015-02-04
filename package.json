@@ -1,6 +1,6 @@
 {
     "name": "nodebb-theme-dark-rectangles",
-    "version": "0.1.0-1",
+    "version": "0.1.1",
     "description": "Dark Theme for NodeBB",
     "main": "theme.less",
     "repository": {
@@ -20,6 +20,6 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "nodebb-theme-vanilla": "~0.0.91"
+        "nodebb-theme-vanilla": "~0.2.0"
     }
 }
