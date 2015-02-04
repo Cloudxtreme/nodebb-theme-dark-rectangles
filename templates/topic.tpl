@@ -11,22 +11,8 @@
 <input type="hidden" template-variable="postcount" value="{postcount}" />
 <input type="hidden" template-variable="viewcount" value="{viewcount}" />
 
-
 <div class="topic">
-	<ol class="breadcrumb">
-		<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-			<a href="{relative_path}/" itemprop="url"><span itemprop="title">[[global:home]]</span></a>
-		</li>
-		<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-			<a href="{relative_path}/category/{category.slug}" itemprop="url"><span itemprop="title">{category.name}</span></a>
-		</li>
-		<li class="active" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-			<span itemprop="title">{title} <a target="_blank" href="{relative_path}/topic/{tid}.rss"><i class="fa fa-rss-square"></i></a></span>
-		</li>
-		<div class="loading-indicator pull-right" done="0" style="display:none;">
-			<i class="fa fa-refresh fa-spin"></i>
-		</div>
-	</ol>
+	<!-- IMPORT partials/breadcrumbs.tpl -->
 
 	<ul id="post-container" class="posts" data-tid="{tid}">
 		<!-- BEGIN posts -->
@@ -44,11 +30,18 @@
 									<a href="<!-- IF posts.user.userslug -->{relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">
 										<img src="{posts.user.picture}" alt="{posts.user.username}" class="profile-image user-img" title="{posts.user.username}">
 									</a>
+									<small class="username" title="{posts.user.username}"><a href="<!-- IF posts.user.userslug -->{relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">{posts.user.username}</a></small>
+
+									<!-- IF posts.user.banned -->
+									<div class="text-center">
+										<span class="label label-danger">[[user:banned]]</span>
+									</div>
+									<!-- ENDIF posts.user.banned -->
 
 									<!-- IF posts.user.groups.length -->
 									<div class="text-center">
 									<!-- BEGIN groups -->
-									<span class="label group-label inline-block" style="background-color: {posts.user.groups.labelColor};"><!-- IF posts.user.groups.icon --><i class="fa fa-lg {posts.user.groups.icon}"></i> <!-- ENDIF posts.user.groups.icon -->{posts.user.groups.userTitle}</span><br/>
+									<a href="{relative_path}/groups/{posts.user.groups.slug}"><span class="label group-label inline-block" style="background-color: {posts.user.groups.labelColor};"><!-- IF posts.user.groups.icon --><i class="fa fa-lg {posts.user.groups.icon}"></i> <!-- ENDIF posts.user.groups.icon -->{posts.user.groups.userTitle}</span></a><br/>
 									<!-- END groups -->
 									</div>
 									<!-- ENDIF posts.user.groups.length -->
@@ -56,7 +49,7 @@
 								<div class="topic-text">
 									<!-- IF @first -->
 									<h3 class="topic-title">
-										<p id="topic_title_{posts.pid}" class="topic-title" itemprop="name">{title}</p>
+										<p id="topic_title_{posts.pid}" class="topic-title" itemprop="name"><i class="fa fa-thumb-tack hide"></i> <i class="fa fa-lock hide"></i> {title}</p>
 									</h3>
 									<!-- ENDIF @first -->
 									<div id="content_{posts.pid}" class="post-content" itemprop="text">{posts.content}</div>
@@ -73,11 +66,11 @@
 								<small class="pull-right">
 									<span>
 										<!-- IF posts.user.userslug -->
-										<i class="fa fa-circle status offline"></i>
+										<i class="fa fa-circle status {posts.user.status}" title='[[global:{posts.user.status}]]'></i>
 										<!-- ENDIF posts.user.userslug -->
-										<span class="username-field" data-username="{posts.user.username}">
+										<span class="username-field" data-username="{posts.user.username}" data-uid="{posts.user.uid}">
 											<!-- IF posts.user.userslug -->
-											[[global:user_posted_ago, <a href="{relative_path}/user/{posts.user.userslug}" itemprop="author">{posts.user.username}</a>, <span class="timeago" title="{posts.relativeTime}"></span>]]
+											[[global:user_posted_ago, <strong><a href="{relative_path}/user/{posts.user.userslug}" itemprop="author">{posts.user.username}</a></strong>, <span class="timeago" title="{posts.relativeTime}"></span>]]
 											<!-- ELSE -->
 											[[global:guest_posted_ago, <span class="timeago" title="{posts.relativeTime}"></span>]]
 											<!-- ENDIF posts.user.userslug -->
@@ -95,7 +88,13 @@
 									</a>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="postMenu_{posts.pid}">
 										<li role="presentation">
-											<a href="#" role="menuitem" tabindex="-1" class="follow hide" title="[[topic:watch.title]]">[[topic:watch]] <i class="fa fa-eye"></i></a>
+											<!-- IF !posts.index -->
+											<!-- IF isFollowing -->
+											<a href="#" role="menuitem" tabindex="-1" class="follow" title="[[topic:unwatch.title]]"><span>[[topic:unwatch]]</span> <i class="fa fa-eye-slash"></i></a>
+											<!-- ELSE -->
+											<a href="#" role="menuitem" tabindex="-1" class="follow" title="[[topic:watch.title]]"><span>[[topic:watch]]</span> <i class="fa fa-eye"></i></a>
+											<!-- ENDIF isFollowing -->
+											<!-- ENDIF !posts.index -->
 										</li>
 										<li role="presentation">
 											<a role="menuitem" tabindex="-1" data-favourited="{posts.favourited}" class="favourite">
@@ -131,9 +130,11 @@
 									<i class="fa fa-chevron-up"></i>
 								</a>
 								<span class="votes" data-votes="{posts.votes}">{posts.votes}</span>
+								<!-- IF !downvote:disabled -->
 								<a href="#" class="downvote <!-- IF posts.downvoted --> downvoted btn-primary <!-- ENDIF posts.downvoted -->">
 									<i class="fa fa-chevron-down"></i>
 								</a>
+								<!-- ENDIF !downvote:disabled -->
 								<!-- ENDIF !reputation:disabled -->
 
 								<!-- IF posts.user.custom_profile_info.length -->
@@ -144,7 +145,11 @@
 								<span class="post-tools">
 									<!-- IF !posts.selfPost -->
 									<!-- IF posts.user.userslug -->
+									<!-- IF loggedIn -->
+									<!-- IF !config.disableChat -->
 									<button class="btn btn-sm btn-link chat" type="button" title="[[topic:chat]]"><i class="fa fa-comment"></i><span class="hidden-xs-inline"> [[topic:chat]]</span></button>
+									<!-- ENDIF !config.disableChat -->
+									<!-- ENDIF loggedIn -->
 									<!-- ENDIF posts.user.userslug -->
 									<!-- ENDIF !posts.selfPost -->
 									<!-- IF privileges.topics:reply -->
@@ -152,12 +157,14 @@
 									<button class="btn btn-sm btn-link post_reply" type="button"><i class="fa fa-reply"></i><span class="hidden-xs-inline"> [[topic:reply]]</span></button>
 									<!-- ENDIF privileges.topics:reply -->
 									<!-- IF !posts.selfPost -->
+									<!-- IF loggedIn -->
 									<button class="btn btn-sm btn-link flag" type="button" title="[[topic:flag_title]]"><i class="fa fa-flag-o"></i><span class="hidden-xs-inline"> [[topic:flag]]</span></button>
+									<!-- ENDIF loggedIn -->
 									<!-- ENDIF !posts.selfPost -->
 									<!-- IF posts.display_moderator_tools -->
 										<button class="btn btn-sm btn-link edit" type="button" title="[[topic:edit]]"><i class="fa fa-pencil"></i><span class="hidden-xs-inline"> [[topic:edit]]</span></button>
 										<button class="btn btn-sm btn-link delete" type="button" title="[[topic:delete]]"><i class="fa fa-trash-o"></i><span class="hidden-xs-inline"> [[topic:delete]]</span></button>
-										<button class="btn btn-sm btn-link purge <!-- IF !posts.deleted -->none<!-- ENDIF !posts.deleted -->" type="button" title="[[topic:purge]]"><i class="fa fa-eraser"></i><span class="hidden-xs-inline"> [[topic:purge]]</span></button>
+										<button class="btn btn-sm btn-link purge <!-- IF !posts.deleted -->hidden<!-- ENDIF !posts.deleted -->" type="button" title="[[topic:purge]]"><i class="fa fa-eraser"></i><span class="hidden-xs-inline"> [[topic:purge]]</span></button>
 										<!-- IF posts.display_move_tools -->
 											<button class="btn btn-sm btn-link move" type="button" title="[[topic:move]]"><i class="fa fa-arrows"></i><span class="hidden-xs-inline"> [[topic:move]]</span></button>
 										<!-- ENDIF posts.display_move_tools -->
@@ -182,12 +189,7 @@
 	</div>
 
 	<!-- IF config.usePagination -->
-	<div class="text-center">
-		<ul class="pagination">
-			<li class="previous pull-left"><a href="#"><i class="fa fa-chevron-left"></i> [[global:previouspage]]</a></li>
-			<li class="next pull-right"><a href="#">[[global:nextpage]] <i class="fa fa-chevron-right"></i></a></li>
-		</ul>
-	</div>
+		<!-- IMPORT partials/paginator.tpl -->
 	<!-- ENDIF config.usePagination -->
 
 	<!-- IMPORT partials/move_thread_modal.tpl -->
